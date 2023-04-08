@@ -75,7 +75,7 @@ def get_new_events(url: str = 'http://apbfrance.com/catalog/all?lang=pl&display=
     diff = list(set(refs) - set(stored_refs))
 
     for new_car in [car for car in cars if car.ref in diff]:
-        Bot(config['TOKEN']).send_message(chat_id=374517044,
+        Bot(config['TOKEN']).send_message(chat_id=int(config['GROUP_ID']),
                                           text=str(new_car), disable_web_page_preview=True)
 
     with open(PROJ_ROOT / 'dataset/refs.json', 'w', encoding='utf-8') as file:
