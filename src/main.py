@@ -2,6 +2,7 @@
 
 from typing import List
 from json import load, dump
+from time import sleep
 
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
@@ -77,6 +78,7 @@ def get_new_events(url: str = 'http://apbfrance.com/catalog/all?lang=pl&display=
     for new_car in [car for car in cars if car.ref in diff]:
         Bot(config['TOKEN']).send_message(chat_id=int(config['GROUP_ID']),
                                           text=str(new_car), disable_web_page_preview=True)
+        sleep(0.2)
 
     with open(PROJ_ROOT / 'dataset/refs.json', 'w', encoding='utf-8') as file:
         dump({"refs": refs}, file, indent=2, ensure_ascii=False)
