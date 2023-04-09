@@ -87,4 +87,5 @@ def get_new_events(url: str = 'http://apbfrance.com/catalog/all?lang=pl&display=
 
 
 if __name__ == '__main__':
+    logger.info('Starting script...')
     get_new_events()
